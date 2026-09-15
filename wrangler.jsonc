@@ -1,0 +1,17 @@
+{
+  // Cloudflare Workers 静态资源部署配置
+  // 将 Next.js static export 生成的 out/ 目录作为静态站点资源部署。
+  // 部署命令：npx wrangler deploy
+  "name": "nextjs-snake",
+  "compatibility_date": "2024-11-06",
+
+  "assets": {
+    // next build（output: 'export'）的产物目录
+    "directory": "./out",
+    // 与 next.config.mjs 的 trailingSlash: true 一致：
+    // /about 与 /about/ 都能命中 out/about/index.html
+    "html_handling": "auto-trailing-slash",
+    // 未匹配到资源时返回 out/404.html（HTTP 404）
+    "not_found_handling": "404-page"
+  }
+}
